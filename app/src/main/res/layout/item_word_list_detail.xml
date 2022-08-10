@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#C1CDCD"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/word_list_detail_item_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#757575"
+        android:scaleType="centerCrop"
+        android:src="@drawable/food_1" />
+
+    <TextView
+        android:id="@+id/word_list_detail_item_name"
+        style="@style/AppTheme.Subheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/word_list_detail_item_image"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toLeftOf="@+id/word_item_price"
+        android:layout_toRightOf="@+id/word_list_detail_item_image"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="Test" />
+
+    <me.zhanghai.android.materialratingbar.MaterialRatingBar
+        android:id="@+id/word_item_rating"
+        style="@style/Widget.MaterialRatingBar.RatingBar.Indicator.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/word_list_detail_item_name"
+        android:layout_alignLeft="@+id/word_list_detail_item_name"
+        android:layout_marginBottom="4dp"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/word_list_detail_item_category"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/word_list_detail_item_name"
+        android:layout_alignLeft="@+id/word_list_detail_item_name"
+        android:layout_marginBottom="4dp"
+        android:textColor="@color/greySecondary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="Verb" />
+
+    <TextView
+        android:id="@+id/word_list_detail_item_meaning_divider"
+        style="@style/AppTheme.TextDivider"
+        android:layout_alignTop="@+id/word_list_detail_item_category"
+        android:layout_toRightOf="@+id/word_list_detail_item_category"
+        android:text="@string/divider_bullet" />
+
+    <TextView
+        android:id="@+id/word_list_detail_item_meaning"
+        style="@style/AppTheme.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/word_list_detail_item_category"
+        android:layout_toRightOf="@+id/word_list_detail_item_meaning_divider"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="18sp"
+        tools:text="Kiểm tra" />
+
+</RelativeLayout>
+
+<!--    android:layout_below="@+id/word_item_rating"-->
+<!--    android:layout_alignLeft="@+id/word_list_detail_item_name"-->

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0E0E0"
+    tools:context="com.google.firebase.example.datn.GroupActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/group_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/AppTheme"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:title="Group"
+        app:titleMarginStart="24dp"
+        app:titleTextColor="@android:color/white" />
+
+    <!-- Main Words recycler -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/group_toolbar"
+        android:background="@android:color/white"
+        tools:listitem="@layout/item_group" />
+
+    <!-- Shadow below toolbar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/filter_bar_container"
+        android:background="@drawable/bg_shadow" />
+
+    <!-- Empty list (pizza guy) view -->
+    <LinearLayout
+        android:id="@+id/group_view_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/group_toolbar"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <ImageView
+            style="@style/AppTheme.PizzaGuy"
+            android:src="@drawable/pizza_monster" />
+
+        <TextView
+            style="@style/AppTheme.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/message_no_results"
+            android:textColor="@color/greyDisabled" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/recycler_words"
+        android:layout_alignTop="@+id/recycler_words"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+</RelativeLayout>

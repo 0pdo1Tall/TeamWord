@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent" android:layout_width="match_parent"
+    android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/type_message_here"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="16dp"
+            android:hint="Taper votre message"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recycler_chat" />
+
+        <Button
+            android:id="@+id/send_message"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/ic_send_24"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@+id/type_message_here"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/type_message_here" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_chat"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/white"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/type_message_here"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="5"
+        tools:listitem="@layout/item_chat" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/chat_toolbar"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            app:title="Message"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="#111111"-->
+<!--    android:orientation="vertical"-->
+<!--    tools:context="com.google.firebase.example.datn.ChatActivity">-->
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:id="@+id/chat_toolbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="?attr/colorPrimary"-->
+<!--        android:theme="@style/AppTheme"-->
+<!--        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"-->
+<!--        app:title="Message"-->
+<!--        app:titleMarginStart="24dp"-->
+<!--        app:titleTextColor="@android:color/white" />-->
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recycler_chat"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@android:color/white"-->
+<!--        tools:listitem="@layout/item_chat" />-->
+
+<!--    <include-->
+<!--        layout="@layout/type_message_area"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_weight="1"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="bottom" />-->
+<!--</LinearLayout>-->
