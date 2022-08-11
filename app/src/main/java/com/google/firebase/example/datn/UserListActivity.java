@@ -1,9 +1,12 @@
 package com.google.firebase.example.datn;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -62,6 +65,9 @@ public class UserListActivity extends AppCompatActivity implements
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         groupId = getIntent().getStringExtra(TAG);
         mGroupRef = FirebaseFirestore.getInstance().document("group/" + groupId);
         mUserDialogFragment = new UserDialogFragment();
@@ -99,7 +105,6 @@ public class UserListActivity extends AppCompatActivity implements
         }
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -132,6 +137,10 @@ public class UserListActivity extends AppCompatActivity implements
                 else{
                     Toast.makeText(this,"You are not authorized to add user", Toast.LENGTH_SHORT).show();
                 }
+                return true;
+
+            case android.R.id.home:
+                this.finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -38,6 +38,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
+        android:textColor="#12467A"
         tools:text="Group ABC" />
 
 </RelativeLayout>

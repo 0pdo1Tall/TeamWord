@@ -16,6 +16,7 @@
  package com.google.firebase.example.datn;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements
     public static final String ADMIN = "Admin";
 
     private static final int RC_SIGN_IN = 9001;
+    private static final int MAIN_TO_CHAT = 11;
 
     private static final int LIMIT = 100;
 
@@ -104,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements
         setSupportActionBar(mToolbar);
 
         //
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         bottomNavigationView.setSelectedItemId(R.id.menu_word);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,19 +115,20 @@ public class MainActivity extends AppCompatActivity implements
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.menu_word:
-                        Toast.makeText(getApplicationContext(),"Word Menu", Toast.LENGTH_SHORT).show();
                         return true;
 
                     case R.id.menu_word_list:
                         //
                         Intent intent = new Intent(getApplicationContext(), WordListActivity.class);
                         intent.putExtra(WordListActivity.TAG, groupId);
+                        intent.putExtra(WordListActivity.ADMIN, admin);
                         startActivity(intent);
                         return true;
 
                     case R.id.menu_chat:
                         Intent chat_intent = new Intent(getApplicationContext(), ChatActivity.class);
                         chat_intent.putExtra(ChatActivity.TAG, groupId);
+                        chat_intent.putExtra(ChatActivity.ADMIN, admin);
                         startActivity(chat_intent);
                         return true;
                 }
@@ -297,13 +302,14 @@ public class MainActivity extends AppCompatActivity implements
                 onAddItemsOneByOne();
                 break;
 
-            case R.id.word_list:
-                onWordList();
-                break;
-
             case R.id.menu_user_management:
                 onUserManagement();
                 break;
+
+            case android.R.id.home:
+                Intent intent = new Intent(MainActivity.this, GroupActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -318,6 +324,7 @@ public class MainActivity extends AppCompatActivity implements
     private void onWordList() {
         Intent intent = new Intent(this, WordListActivity.class);
         intent.putExtra(WordListActivity.TAG, mGroupReference.getId());
+        intent.putExtra(WordListActivity.ADMIN, admin);
         startActivity(intent);
     }
 
@@ -388,4 +395,5 @@ public class MainActivity extends AppCompatActivity implements
         // Add a new document to the words collection
         words.add(word);
     }
+
 }

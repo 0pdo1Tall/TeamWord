@@ -1,11 +1,14 @@
 package com.google.firebase.example.datn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +31,8 @@ import butterknife.OnClick;
 public class ChatActivity extends AppCompatActivity {
 
     public static final String TAG = "ChatActivity";
-    String groupId;
+    public static final String ADMIN = "admin";
+    String groupId, admin;
 
     private FirebaseFirestore mFirestore;
     DocumentReference groupRef;
@@ -65,6 +69,10 @@ public class ChatActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        admin = getIntent().getStringExtra(ChatActivity.ADMIN);
         groupId = getIntent().getStringExtra(ChatActivity.TAG);
         mFirestore = FirebaseFirestore.getInstance();
         groupRef = mFirestore.document("group/" + groupId);
@@ -73,6 +81,17 @@ public class ChatActivity extends AppCompatActivity {
         //
         initFirestore();
         initRecyclerView();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(ChatActivity.this, MainActivity.class);
+            intent.putExtra(MainActivity.TAG, groupId);
+            intent.putExtra(MainActivity.ADMIN, admin);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void initFirestore(){

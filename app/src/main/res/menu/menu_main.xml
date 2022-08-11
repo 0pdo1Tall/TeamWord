@@ -7,10 +7,6 @@
         android:title="@string/add_item_one_by_one" />
 
     <item
-        android:id="@+id/word_list"
-        android:title="Word List" />
-
-    <item
         android:id="@+id/menu_user_management"
         android:title="@string/user_management" />
 

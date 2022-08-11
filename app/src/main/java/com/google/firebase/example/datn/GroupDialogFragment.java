@@ -52,7 +52,6 @@ public class GroupDialogFragment extends DialogFragment {
 
     @OnClick(R.id.group_cancel_button)
     public void onCancelClicked(View view){
-        Toast.makeText(getContext(), "Group Add Cancel", Toast.LENGTH_SHORT).show();
         dismiss();
     }
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -67,6 +68,9 @@ public class WordListDetailActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_word_list_detail);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Enable Firestore logging
         FirebaseFirestore.setLoggingEnabled(true);
@@ -154,6 +158,10 @@ public class WordListDetailActivity extends AppCompatActivity implements
             case R.id.menu_add_word_list_detail:
                 onAddItemsOneByOne();
                 break;
+
+            case android.R.id.home:
+                this.finish();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

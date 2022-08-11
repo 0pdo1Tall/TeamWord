@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#A0A1AF"
+    android:background="#C7C7C7"
     android:orientation="vertical"
     android:padding="8dp">
 

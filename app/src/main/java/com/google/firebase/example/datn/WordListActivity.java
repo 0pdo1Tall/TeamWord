@@ -26,6 +26,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -62,6 +64,7 @@ public class WordListActivity extends AppCompatActivity implements
         WordListDeleteDialogFragment.WordListDeleteListener {
 
     public static final String TAG = "WordListActivity";
+    public static final String ADMIN = "admin";
 
     private static final int LIMIT = 100;
 
@@ -77,7 +80,7 @@ public class WordListActivity extends AppCompatActivity implements
     @BindView(R.id.word_list_bottom_navigation)
     BottomNavigationView bottomNavigationView;
 
-    String groupId;
+    String groupId,admin;
 
     private FirebaseFirestore mFirestore;
     private Query mQuery;
@@ -97,6 +100,7 @@ public class WordListActivity extends AppCompatActivity implements
 
         //
         groupId = getIntent().getStringExtra(WordListActivity.TAG);
+        admin = getIntent().getStringExtra(WordListActivity.ADMIN);
 
         bottomNavigationView.setSelectedItemId(R.id.menu_word_list);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -106,16 +110,17 @@ public class WordListActivity extends AppCompatActivity implements
                     case R.id.menu_word:
                         Intent word_intent = new Intent(getApplicationContext(), MainActivity.class);
                         word_intent.putExtra(MainActivity.TAG, groupId);
+                        word_intent.putExtra(MainActivity.ADMIN, admin);
                         startActivity(word_intent);
                         return true;
 
                     case R.id.menu_word_list:
-                        Toast.makeText(getApplicationContext(),"Word List Menu", Toast.LENGTH_SHORT).show();
                         return true;
 
                     case R.id.menu_chat:
                         Intent chat_intent = new Intent(getApplicationContext(), ChatActivity.class);
                         chat_intent.putExtra(ChatActivity.TAG, groupId);
+                        chat_intent.putExtra(ChatActivity.ADMIN, admin);
                         startActivity(chat_intent);
                         return true;
                 }
@@ -227,6 +232,7 @@ public class WordListActivity extends AppCompatActivity implements
             case R.id.menu_add_word_list:
                 onAddItemsOneByOne();
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }

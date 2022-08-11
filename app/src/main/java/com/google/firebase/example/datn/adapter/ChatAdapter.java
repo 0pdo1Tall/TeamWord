@@ -49,7 +49,7 @@ public class ChatAdapter extends FirestoreAdapter<ChatAdapter.ViewHolder>{
 
         public void bind(DocumentSnapshot snapshot){
             Chat chat = snapshot.toObject(Chat.class);
-            String pattern = "yyyy/MM/dd HH:mm:ss";
+            String pattern = "yyyy/MM/dd - HH:mm";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String timestamp = simpleDateFormat.format(chat.getTimestamp());
             titleView.setText(timestamp + "\nBy: " + chat.getOwner());
