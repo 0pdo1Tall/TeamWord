@@ -39,6 +39,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.example.datn.adapter.RatingAdapter;
 import com.google.firebase.example.datn.model.Rating;
 import com.google.firebase.example.datn.model.Word;
+import com.google.firebase.example.datn.util.WordUtil;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -249,11 +250,11 @@ public class WordDetailActivity extends AppCompatActivity
     }
 
     private void onWordLoaded(Word word) {
-        mNameView.setText(word.getName());
+        mNameView.setText(WordUtil.getStringFirstCapital(word.getName()));
         mRatingIndicator.setRating((float) word.getAvgRating());
         mNumRatingsView.setText(getString(R.string.fmt_num_ratings, word.getNumRatings()));
-        mMeaningView.setText(word.getMeaning());
-        mCategoryView.setText(word.getCategory());
+        mMeaningView.setText(WordUtil.getStringFirstCapital(word.getMeaning()));
+        mCategoryView.setText(WordUtil.getStringFirstCapital(word.getCategory()));
 
         //
         mOwnerView.setText(word.getOwner());
@@ -287,19 +288,6 @@ public class WordDetailActivity extends AppCompatActivity
             mWordUpdateDialog.show(getSupportFragmentManager(), WordUpdateDialogFragment.TAG);
         }else{
             Log.d(TAG, "onEditClicked: " + " user cannot edit this page");
-        }
-    }
-
-    @OnClick(R.id.word_button_delete)
-    public void onDeleteClicked(View view) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String currentUser = user.getEmail();
-        String owner = mOwnerView.getText().toString();
-        if(currentUser.equals(owner)){
-            Log.d(TAG, "onDeleteClicked: " + " user can delete this page");
-            mWordDeleteDialog.show(getSupportFragmentManager(), WordDeleteDialogFragment.TAG);
-        }else{
-            Log.d(TAG, "onDeleteClicked: " + " user cannot delete this page");
         }
     }
 

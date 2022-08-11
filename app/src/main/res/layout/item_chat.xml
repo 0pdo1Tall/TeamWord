@@ -33,6 +33,7 @@
         android:layout_toRightOf="@+id/card_view"
         android:ellipsize="end"
         android:maxLines="2"
+        android:textColor="#3C555F"
         android:textStyle="bold"
         tools:text="11:11 pm 20-2-2022 \n By: TienHoang" />
 

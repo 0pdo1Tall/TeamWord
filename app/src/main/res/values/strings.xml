@@ -69,6 +69,7 @@
     <string name="limit_200">200</string>
     <string name="add_word_list_detail">Add WordList Detail</string>
     <string name="dialog_add_word_list_detail">WordList Detail</string>
+    <string name="dialog_delete_user">Delete This User ?</string>
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">
         <item>@string/value_any_category</item>

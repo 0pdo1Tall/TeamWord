@@ -247,6 +247,7 @@ public class GroupActivity extends AppCompatActivity implements
     public void onGroupSelected(DocumentSnapshot group) {
         Intent intent = new Intent(GroupActivity.this, MainActivity.class);
         intent.putExtra(MainActivity.TAG, group.getId());
+        intent.putExtra(MainActivity.ADMIN, group.getString("admin"));
         startActivity(intent);
     }
 

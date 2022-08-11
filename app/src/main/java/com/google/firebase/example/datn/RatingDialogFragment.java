@@ -95,7 +95,7 @@ public class RatingDialogFragment extends DialogFragment {
         if (mRatingListener != null) {
             mRatingListener.onRating(rating);
         }
-
+        mRatingText.setText("");
         dismiss();
     }
 

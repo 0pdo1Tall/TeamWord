@@ -42,7 +42,9 @@ public class WordUpdateDialogFragment extends DialogFragment {
         if(mWordUpdateListener != null){
             mWordUpdateListener.onWordUpdate(name,meaning,category);
         }
-
+        mWordUpdateName.setText("");
+        mWordUpdateMeaning.setText("");
+        mWordUpdateCategory.setText("");
         dismiss();
     }
 

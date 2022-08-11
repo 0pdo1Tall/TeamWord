@@ -41,19 +41,11 @@
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/word_price"
-            android:layout_marginLeft="-67dp"
-            android:layout_marginTop="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="-71dp"
+            android:layout_marginTop="97dp"
             android:background="?attr/selectableItemBackground"
             app:srcCompat="@drawable/button_edit_96" />
-
-        <ImageButton
-            android:id="@+id/word_button_delete"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_alignRight="@+id/word_price"
-            android:layout_marginTop="90dp"
-            android:background="?attr/selectableItemBackground"
-            app:srcCompat="@drawable/button_delete_96" />
 
         <TextView
             android:id="@+id/word_owner"
@@ -63,8 +55,8 @@
             android:layout_above="@+id/word_name"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"/>
+            android:textColor="#3397C1"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/word_name"
@@ -74,7 +66,7 @@
             android:layout_above="@+id/word_rating"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#AD5D4C"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="Some word" />
@@ -131,7 +123,7 @@
             android:layout_below="@+id/word_category"
             android:layout_alignTop="@+id/word_category"
             android:layout_toRightOf="@+id/word_meaning_divider"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#AD5D4C"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="San Francisco" />

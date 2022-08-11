@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.example.datn.R;
 import com.google.firebase.example.datn.model.Word;
+import com.google.firebase.example.datn.util.WordUtil;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.Query;
 
@@ -99,10 +100,10 @@ public class WordAdapter extends FirestoreAdapter<WordAdapter.ViewHolder> {
                     .load(word.getPhoto())
                     .into(imageView);
 
-            nameView.setText(word.getName());
+            nameView.setText(WordUtil.getStringFirstCapital(word.getName()));
             ratingBar.setRating((float) word.getAvgRating());
             meaningView.setText("");
-            categoryView.setText(word.getCategory());
+            categoryView.setText(WordUtil.getStringFirstCapital(word.getCategory()));
             numRatingsView.setText(resources.getString(R.string.fmt_num_ratings,
                     word.getNumRatings()));
 

@@ -56,6 +56,9 @@ public class WordListDetailDialogFragment extends DialogFragment {
             mWordListDetailAddedListener.onWordListDetailAdded(wordListDetail);
         }
 
+        mWordListDetailName.setText("");
+        mWordListDetailMeaning.setText("");
+        mWordListDetailCategory.setText("");
         dismiss();
     }
 

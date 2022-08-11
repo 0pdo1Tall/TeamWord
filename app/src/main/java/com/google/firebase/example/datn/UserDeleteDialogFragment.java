@@ -1,48 +1,43 @@
 package com.google.firebase.example.datn;
+
 import android.content.Context;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class UserDialogFragment extends DialogFragment {
+public class UserDeleteDialogFragment extends DialogFragment {
 
-    public static final String TAG = "UserDialog";
-    @BindView(R.id.user_name_text)
-    EditText mUserName;
+    public static final String TAG = "UserDeleteDialog";
+    public static final String USER = "User";
+    private String user;
 
-    interface UserAddedListener {
-
-        void onUserAdded(String user);
-
+    interface UserDeleteListener {
+        void onUserDelete(String user);
     }
 
-    private UserAddedListener mUserAddedListener;
+    private UserDeleteListener mUserDeleteListener;
 
-    @OnClick(R.id.user_add_button)
+    @OnClick(R.id.user_delete_button)
     public void onSubmitClicked(View view){
-        Toast.makeText(getContext(), "User Added", Toast.LENGTH_SHORT).show();
-        String name = mUserName.getText().toString();
-        if(mUserAddedListener != null)
+
+        if(mUserDeleteListener != null)
         {
-            mUserAddedListener.onUserAdded(name);
+            mUserDeleteListener.onUserDelete(user);
         }
-        mUserName.setText("");
         dismiss();
     }
 
-    @OnClick(R.id.user_cancel_button)
+    @OnClick(R.id.user_delete_cancel_button)
     public void onCancelClicked(View view){
-        Toast.makeText(getContext(), "User Add Cancel", Toast.LENGTH_SHORT).show();
         dismiss();
     }
 
@@ -51,7 +46,8 @@ public class UserDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.dialog_add_user, container, false);
+        View v = inflater.inflate(R.layout.dialog_delete_user, container, false);
+        user = getArguments().getString(UserDeleteDialogFragment.USER);
         ButterKnife.bind(this, v);
 
         return v;
@@ -61,8 +57,8 @@ public class UserDialogFragment extends DialogFragment {
     public void onAttach(Context context){
         super.onAttach(context);
 
-        if (context instanceof UserDialogFragment.UserAddedListener) {
-            mUserAddedListener = (UserDialogFragment.UserAddedListener) context;
+        if (context instanceof UserDeleteDialogFragment.UserDeleteListener) {
+            mUserDeleteListener = (UserDeleteDialogFragment.UserDeleteListener) context;
         }
     }
 
@@ -73,4 +69,5 @@ public class UserDialogFragment extends DialogFragment {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
     }
+
 }

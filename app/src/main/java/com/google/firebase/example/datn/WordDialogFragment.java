@@ -59,7 +59,9 @@ public class WordDialogFragment extends DialogFragment {
         if(mWordAddedListener != null){
             mWordAddedListener.onWordAdded(word);
         }
-
+        mWordName.setText("");
+        mWordMeaning.setText("");
+        mWordCategory.setText("");
         dismiss();
     }
 

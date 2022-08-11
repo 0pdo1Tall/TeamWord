@@ -15,6 +15,8 @@
  */
  package com.google.firebase.example.datn.util;
 
+import android.text.TextUtils;
+
 import com.google.firebase.example.datn.model.Word;
 
 import java.util.Locale;
@@ -32,14 +34,18 @@ public class WordUtil {
         return s.toLowerCase().replaceAll("\\s","");
     }
 
-    /**
-     * Get a random image.
-     */
     //
     public static String getRandomImageUrl(Random random) {
         // Integer between 1 and MAX_IMAGE_NUM (inclusive)
         int id = random.nextInt(MAX_IMAGE_NUM) + 1;
 
         return String.format(Locale.getDefault(), WORD_URL_FMT, id);
+    }
+
+    public static String getStringFirstCapital(String s){
+        if(s.length() > 0 && !TextUtils.isEmpty(s.substring(0,1))){
+            return s.substring(0,1).toUpperCase() + s.substring(1);
+        }
+        return s;
     }
 }

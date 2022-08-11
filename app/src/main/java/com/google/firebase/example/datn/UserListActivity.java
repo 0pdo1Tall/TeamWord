@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.datn.model.Group;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,10 +29,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class UserListActivity extends AppCompatActivity implements
-        EventListener<DocumentSnapshot>, UserDialogFragment.UserAddedListener {
+        EventListener<DocumentSnapshot>, UserDialogFragment.UserAddedListener,
+        UserDeleteDialogFragment.UserDeleteListener {
 
     public static final String TAG = "UserListActivity";
-
+    public static final String ADMIN = "Admin";
     // List View object
     ListView listView;
 
@@ -40,7 +42,8 @@ public class UserListActivity extends AppCompatActivity implements
 
     // Define array List for List View data
     ArrayList<String> mylist;
-
+    //
+    String admin,user;
 
     @BindView(R.id.user_toolbar)
     Toolbar mToolbar;
@@ -50,6 +53,7 @@ public class UserListActivity extends AppCompatActivity implements
     private DocumentReference mGroupRef;
     private ListenerRegistration mGroupRegistration;
     private UserDialogFragment mUserDialogFragment;
+    private UserDeleteDialogFragment mUserDeleteDialogFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class UserListActivity extends AppCompatActivity implements
         groupId = getIntent().getStringExtra(TAG);
         mGroupRef = FirebaseFirestore.getInstance().document("group/" + groupId);
         mUserDialogFragment = new UserDialogFragment();
+        mUserDeleteDialogFragment = new UserDeleteDialogFragment();
 
         // initialise ListView with id
         listView = findViewById(R.id.userList);
@@ -74,6 +79,24 @@ public class UserListActivity extends AppCompatActivity implements
                 android.R.layout.simple_list_item_1,
                 mylist);
         listView.setAdapter(adapter);
+
+        user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        admin = getIntent().getStringExtra(UserListActivity.ADMIN);
+
+        if(user.equals(admin)){
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                String user = (String) parent.getItemAtPosition(position);
+                if(!user.equals(admin)){
+                    // delete user
+                    Bundle bundle = new Bundle();
+                    bundle.putString(UserDeleteDialogFragment.USER, user);
+                    mUserDeleteDialogFragment.setArguments(bundle);
+                    mUserDeleteDialogFragment.show(getSupportFragmentManager(), UserDeleteDialogFragment.TAG);
+                }else{
+                    Toast.makeText(this, "Admin account cannot be deleted", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
 
@@ -103,7 +126,12 @@ public class UserListActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_add_user:
-                mUserDialogFragment.show(getSupportFragmentManager(), UserDialogFragment.TAG);
+                if(user.equals(admin)) {
+                    mUserDialogFragment.show(getSupportFragmentManager(), UserDialogFragment.TAG);
+                }
+                else{
+                    Toast.makeText(this,"You are not authorized to add user", Toast.LENGTH_SHORT).show();
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -121,7 +149,7 @@ public class UserListActivity extends AppCompatActivity implements
 
     @Override
     public void onUserAdded(String user) {
-        Toast.makeText(this, "Return OK ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show();
         // get list string from adapter
         ArrayList<String> list = new ArrayList<>();
         for (int i = 0; i < adapter.getCount(); i++) {
@@ -135,7 +163,18 @@ public class UserListActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void onUserDelete(String user){
+        deleteUser(user);
+    }
+
     private void addUser(String user) {
         mGroupRef.update("user", FieldValue.arrayUnion(user));
     }
+
+    private void deleteUser(String user){
+        mGroupRef.update("user", FieldValue.arrayRemove(user));
+        Toast.makeText(this, "User removed", Toast.LENGTH_SHORT).show();
+    }
+
 }

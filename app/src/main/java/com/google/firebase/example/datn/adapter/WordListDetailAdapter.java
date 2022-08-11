@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -37,7 +38,7 @@ public class WordListDetailAdapter extends FirestoreAdapter<WordListDetailAdapte
 
     public interface OnWordListDetailLongSelectedListener {
 
-        void onWordListDetailLongSelected(DocumentSnapshot word,String owner);
+        void onWordListDetailLongSelected(DocumentSnapshot word);
     }
 
     private OnWordListDetailLongSelectedListener mListener;
@@ -72,6 +73,9 @@ public class WordListDetailAdapter extends FirestoreAdapter<WordListDetailAdapte
         @BindView(R.id.word_list_detail_item_meaning)
         TextView meaningView;
 
+        @BindView(R.id.word_list_detail_button_back)
+        ImageView deleteButton;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -93,12 +97,13 @@ public class WordListDetailAdapter extends FirestoreAdapter<WordListDetailAdapte
             meaningView.setText(wordListDetail.getMeaning());
             categoryView.setText(wordListDetail.getCategory());
 
+            deleteButton.setImageResource(R.drawable.ic_close_white_24px);
             // Click listener
-            itemView.setOnClickListener(new View.OnClickListener() {
+            deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (listener != null) {
-                        listener.onWordListDetailLongSelected(snapshot, wordListDetail.getOwner());
+                        listener.onWordListDetailLongSelected(snapshot);
                     }
                 }
             });

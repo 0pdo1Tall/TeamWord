@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
@@ -15,7 +16,10 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.example.datn.adapter.WordListDetailAdapter;
 import com.google.firebase.example.datn.model.WordListDetail;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,6 +31,7 @@ import com.google.firebase.firestore.Query;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WordListDetailActivity extends AppCompatActivity implements
         WordListDetailAdapter.OnWordListDetailLongSelectedListener,
@@ -34,6 +39,7 @@ public class WordListDetailActivity extends AppCompatActivity implements
 {
 
     public static final String TAG = "WordListDetailActivity";
+    public static final String OWNER = "Owner";
 
     @BindView(R.id.word_list_detail_toolbar)
     Toolbar mToolbar;
@@ -46,6 +52,8 @@ public class WordListDetailActivity extends AppCompatActivity implements
 
     private FirebaseFirestore mFirestore;
     private Query mQuery;
+
+    String user;
     //
     String wordListId;
     private DocumentReference mWordListReference;
@@ -67,11 +75,12 @@ public class WordListDetailActivity extends AppCompatActivity implements
         mFirestore = FirebaseFirestore.getInstance();
         wordListId = getIntent().getStringExtra(WordListDetailActivity.TAG);
         mWordListReference = mFirestore.document(wordListId);
-        Toast.makeText(this, "wordListId: " + wordListId, Toast.LENGTH_LONG).show();
         initFirestore();
         initRecyclerView();
 
         mWordListDetailDialogFragment = new WordListDetailDialogFragment();
+        //
+        user = FirebaseAuth.getInstance().getCurrentUser().getEmail();
     }
 
     private void initFirestore() {
@@ -84,7 +93,7 @@ public class WordListDetailActivity extends AppCompatActivity implements
             Log.w(TAG, "No query, not initializing RecyclerView");
         }
 
-        mAdapter = new WordListDetailAdapter(mQuery, this) {
+        mAdapter = new WordListDetailAdapter(mQuery,this) {
 
             @Override
             protected void onDataChanged() {
@@ -161,7 +170,23 @@ public class WordListDetailActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onWordListDetailLongSelected(DocumentSnapshot word, String owner) {
-        Toast.makeText(this,"WordListDetail: Long Click Listener",Toast.LENGTH_SHORT).show();
+    public void onWordListDetailLongSelected(DocumentSnapshot word) {
+        String owner = word.getString("owner");
+        if(user.equals(owner)){
+            // delete this wordlist detail
+            word.getReference().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "WordListDetail successfully deleted!");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.w(TAG, "Error deleting WordListDetail", e);
+                }
+            });
+        }else{
+            Toast.makeText(this, "You can't delete this wordlist detail", Toast.LENGTH_SHORT).show();
+        }
     }
 }

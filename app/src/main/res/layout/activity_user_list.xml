@@ -13,9 +13,8 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:theme="@style/AppTheme"
-        app:logo="@drawable/ic_word_white_24px"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
-        app:title="@string/app_name"
+        app:title="User List"
         app:titleMarginStart="24dp"
         app:titleTextColor="@android:color/white" />
 

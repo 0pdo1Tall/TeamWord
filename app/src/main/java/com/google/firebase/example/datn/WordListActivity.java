@@ -174,6 +174,7 @@ public class WordListActivity extends AppCompatActivity implements
         mWordListRecycler.setLayoutManager(new LinearLayoutManager(this));
         //
         DividerItemDecoration itemDecorator = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
+        itemDecorator.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.wordlist_divider));
         mWordListRecycler.addItemDecoration(itemDecorator);
         mWordListRecycler.setAdapter(mAdapter);
 
@@ -239,9 +240,9 @@ public class WordListActivity extends AppCompatActivity implements
     public void onWordListSelected(DocumentSnapshot wordList) {
         // Go to the details page for the selected word
         Intent intent = new Intent(this, WordListDetailActivity.class);
-
+        String owner = wordList.getString("owner");
+        intent.putExtra(WordListDetailActivity.OWNER, owner);
         intent.putExtra(WordListDetailActivity.TAG, "group/" + groupId + "/wordList/" + wordList.getId());
-//        Toast.makeText(this, "group/" + groupId + "/wordList/" + wordList.getId(), Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 

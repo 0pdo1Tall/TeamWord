@@ -46,6 +46,7 @@ public class GroupDialogFragment extends DialogFragment {
         {
             mGroupAddedListener.onGroupAdded(group);
         }
+        mGroupName.setText("");
         dismiss();
     }
 

@@ -16,6 +16,7 @@
  package com.google.firebase.example.datn;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements
         WordAdapter.OnWordSelectedListener {
 
     public static final String TAG = "MainActivity";
+    public static final String ADMIN = "Admin";
 
     private static final int RC_SIGN_IN = 9001;
 
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements
 
     //
     String groupId;
+    String admin;
 
     private FilterDialogFragment mFilterDialog;
     //
@@ -137,6 +140,7 @@ public class MainActivity extends AppCompatActivity implements
         // Initialize Firestore and the main RecyclerView
         mFirestore = FirebaseFirestore.getInstance();
         groupId = getIntent().getStringExtra(MainActivity.TAG);
+        admin = getIntent().getStringExtra(MainActivity.ADMIN);
         mGroupReference = mFirestore.collection("group").document(groupId);
         initFirestore();
         initRecyclerView();
@@ -182,6 +186,7 @@ public class MainActivity extends AppCompatActivity implements
         mWordRecycler.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mWordRecycler.getContext(),
                 DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.word_divider));
         mWordRecycler.addItemDecoration(dividerItemDecoration);
         mWordRecycler.setAdapter(mAdapter);
 
@@ -306,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements
     private void onUserManagement() {
         Intent intent = new Intent(this, UserListActivity.class);
         intent.putExtra(UserListActivity.TAG, groupId);
+        intent.putExtra(UserListActivity.ADMIN, admin);
         startActivity(intent);
     }
 
@@ -350,7 +356,6 @@ public class MainActivity extends AppCompatActivity implements
         Intent intent = new Intent(this, WordDetailActivity.class);
         intent.putExtra(WordDetailActivity.GROUP_ID, mGroupReference.getId());
         intent.putExtra(WordDetailActivity.KEY_WORD_ID, word.getId());
-
         startActivity(intent);
     }
 
