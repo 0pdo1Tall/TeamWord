@@ -107,7 +107,7 @@
             android:layout_marginBottom="8dp"
             android:textColor="#80005A"
             android:textSize="22sp"
-            tools:text="Italian" />
+            tools:text="" />
 
         <TextView
             android:id="@+id/word_meaning_divider"
@@ -130,7 +130,7 @@
             android:textColor="#811616"
             android:textSize="22sp"
             android:textStyle="bold"
-            tools:text="San Francisco" />
+            tools:text="" />
 
         <TextView
             android:id="@+id/word_space"

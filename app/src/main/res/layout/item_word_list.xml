@@ -20,7 +20,7 @@
             android:layout_height="60dp"
             android:background="#757575"
             android:scaleType="centerCrop"
-            android:src="@drawable/food_1" />
+            android:src="@drawable/pic_1" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

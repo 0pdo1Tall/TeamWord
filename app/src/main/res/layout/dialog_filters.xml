@@ -35,7 +35,6 @@
 
     </RelativeLayout>
 
-    <!-- Food Type -->
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -55,48 +54,6 @@
             android:entries="@array/categories" />
 
     </RelativeLayout>
-
-    <!-- Location -->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/icon_meaning"-->
-<!--            style="@style/AppTheme.FilterIcon"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:tint="@color/greySecondary"-->
-<!--            app:srcCompat="@drawable/ic_place_white_24px" />-->
-
-<!--&lt;!&ndash;        <Spinner&ndash;&gt;-->
-<!--&lt;!&ndash;            android:id="@+id/spinner_city"&ndash;&gt;-->
-<!--&lt;!&ndash;            style="@style/AppTheme.FilterSpinner"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_centerVertical="true"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:layout_toRightOf="@+id/icon_meaning"&ndash;&gt;-->
-<!--&lt;!&ndash;            android:entries="@array/cities" />&ndash;&gt;-->
-
-<!--    </RelativeLayout>-->
-
-<!--    &lt;!&ndash; Price &ndash;&gt;-->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/icon_price"-->
-<!--            style="@style/AppTheme.FilterIcon"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:tint="@color/greySecondary"-->
-<!--            app:srcCompat="@drawable/ic_monetization_on_white_24px" />-->
-
-<!--        <Spinner-->
-<!--            android:id="@+id/spinner_price"-->
-<!--            style="@style/AppTheme.FilterSpinner"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:layout_toRightOf="@+id/icon_price"-->
-<!--            android:entries="@array/prices" />-->
-
-<!--    </RelativeLayout>-->
 
     <!-- Sort by -->
     <RelativeLayout

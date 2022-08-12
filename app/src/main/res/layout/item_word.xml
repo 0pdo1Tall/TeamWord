@@ -20,7 +20,7 @@
             android:layout_height="60dp"
             android:background="#757575"
             android:scaleType="centerCrop"
-            android:src="@drawable/food_1" />
+            android:src="@drawable/pic_1" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -32,13 +32,13 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="-2dp"
         android:layout_marginBottom="4dp"
-        android:layout_toLeftOf="@+id/word_item_price"
+        android:layout_toLeftOf="@+id/word_item_space"
         android:layout_toRightOf="@+id/word_item_cardview"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="#811616"
         android:textStyle="bold"
-        tools:text="Foo's Bar" />
+        tools:text="Title" />
 
     <me.zhanghai.android.materialratingbar.MaterialRatingBar
         android:id="@+id/word_item_rating"
@@ -72,7 +72,7 @@
         android:layout_below="@+id/word_item_rating"
         android:textColor="#80005A"
         android:textStyle="bold"
-        tools:text="Italian" />
+        tools:text="Verb" />
 
     <TextView
         android:id="@+id/word_item_meaning_divider"
@@ -89,10 +89,10 @@
         android:layout_alignTop="@+id/word_item_category"
         android:layout_toRightOf="@+id/word_item_meaning_divider"
         android:textColor="@color/greySecondary"
-        tools:text="San Francisco" />
+        tools:text="none" />
 
     <TextView
-        android:id="@+id/word_item_price"
+        android:id="@+id/word_item_space"
         style="@style/AppTheme.Caption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

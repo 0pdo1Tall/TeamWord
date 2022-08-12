@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
 public class WordDeleteDialogFragment extends DialogFragment {
     public static final String TAG = "WordUpdateDialog";
 

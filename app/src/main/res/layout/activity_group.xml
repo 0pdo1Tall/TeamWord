@@ -34,7 +34,6 @@
         android:layout_below="@+id/filter_bar_container"
         android:background="@drawable/bg_shadow" />
 
-    <!-- Empty list (pizza guy) view -->
     <LinearLayout
         android:id="@+id/group_view_empty"
         android:layout_width="wrap_content"

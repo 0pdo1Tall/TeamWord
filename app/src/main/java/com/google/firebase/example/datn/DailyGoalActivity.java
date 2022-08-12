@@ -81,7 +81,7 @@ public class DailyGoalActivity extends AppCompatActivity {
     private void createNotificationChannel() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            CharSequence name = "foxandroidReminderChannel";
+            CharSequence name = "ReminderChannel";
             String description = "Channel For Alarm Manager";
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel channel = new NotificationChannel("channelId",name,importance);

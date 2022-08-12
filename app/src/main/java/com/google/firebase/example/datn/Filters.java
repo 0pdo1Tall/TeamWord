@@ -107,10 +107,6 @@ public class Filters {
             desc.append("</b>");
         }
 
-//        if (category != null) {
-//            desc.append(" in ");
-//        }
-
         if(owner != null){
             desc.append(" by " + owner);
         }

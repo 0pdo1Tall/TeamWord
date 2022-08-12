@@ -14,7 +14,7 @@
         android:layout_height="50dp"
         android:background="#757575"
         android:scaleType="centerCrop"
-        android:src="@drawable/food_1" />
+        android:src="@drawable/pic_1" />
 
     <ImageView
         android:id="@+id/word_list_detail_button_back"

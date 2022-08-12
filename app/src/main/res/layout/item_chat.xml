@@ -50,17 +50,4 @@
         android:textColor="@color/white"
         tools:text="Please someone make a sport wordlist in detail" />
 
-
 </RelativeLayout>
-
-<!--<TextView-->
-<!--android:layout_height="wrap_content"-->
-<!--android:maxWidth="250dp"-->
-<!--android:layout_width="wrap_content"-->
-<!--android:padding="16dp"-->
-<!--android:background="@drawable/bg_receive_message"-->
-<!--android:text="@{message.text}"-->
-<!--tools:text="Salut les amis j'espere que vous aller bien, mois ca je cerhcuer comprendre"-->
-<!--android:textColor="@android:color/white"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintTop_toTopOf="parent" />-->

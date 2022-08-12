@@ -70,8 +70,6 @@
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
 
-
-
     <ProgressBar
         android:id="@+id/progress_loading"
         android:layout_width="wrap_content"

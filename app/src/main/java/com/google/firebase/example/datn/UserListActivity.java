@@ -1,6 +1,5 @@
 package com.google.firebase.example.datn;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.content.Intent;
