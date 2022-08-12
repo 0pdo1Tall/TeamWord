@@ -6,6 +6,10 @@
         android:title="@string/add_group" />
 
     <item
+        android:id="@+id/menu_notification"
+        android:title="@string/notification" />
+
+    <item
         android:id="@+id/menu_sign_out"
         android:title="@string/sign_out" />
 </menu>

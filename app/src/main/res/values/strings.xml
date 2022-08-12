@@ -24,7 +24,7 @@
     <string name="divider_bullet">•</string>
     <string name="apply">Apply</string>
     <string name="cancel">Cancel</string>
-    <string name="message_no_results">Oops, couldn\'t find any results\nthat matched your filter</string>
+    <string name="message_no_results">Couldn\'t find any results</string>
     <string name="message_no_reviews">Be the first to leave a review!</string>
     <string name="hint_review">How was your experience?</string>
     <string name="submit">Submit</string>
@@ -68,8 +68,9 @@
     <string name="limit_100">100</string>
     <string name="limit_200">200</string>
     <string name="add_word_list_detail">Add WordList Detail</string>
-    <string name="dialog_add_word_list_detail">WordList Detail</string>
+    <string name="dialog_add_word_list_detail">Word</string>
     <string name="dialog_delete_user">Delete This User ?</string>
+    <string name="notification">Reminder</string>
     <!-- Types of food I could think of in 5 minutes -->
     <string-array name="categories">
         <item>@string/value_any_category</item>

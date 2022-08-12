@@ -40,7 +40,7 @@
         android:layout_toRightOf="@+id/word_list_detail_item_image"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="#AD5D4C"
+        android:textColor="#811616"
         android:textSize="20sp"
         android:textStyle="bold"
         tools:text="Test" />
@@ -82,7 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/word_list_detail_item_category"
         android:layout_toRightOf="@+id/word_list_detail_item_meaning_divider"
-        android:textColor="#AD5D4C"
+        android:textColor="#811616"
+        android:textStyle="bold"
         android:textSize="18sp"
         tools:text="Kiểm tra" />
 

@@ -36,7 +36,6 @@ public class GroupDialogFragment extends DialogFragment {
 
     @OnClick(R.id.group_add_button)
     public void onSubmitClicked(View view){
-        Toast.makeText(getContext(), "Group Added", Toast.LENGTH_SHORT).show();
         String name = mGroupName.getText().toString();
         String photo = WordUtil.getRandomImageUrl(new Random());
         String admin = FirebaseAuth.getInstance().getCurrentUser().getEmail();

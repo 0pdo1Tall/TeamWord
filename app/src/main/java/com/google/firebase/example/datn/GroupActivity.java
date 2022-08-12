@@ -138,9 +138,6 @@ public class GroupActivity extends AppCompatActivity implements
         };
 
         mGroupRecycler.setLayoutManager(new LinearLayoutManager(this));
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mGroupRecycler.getContext(),
-                DividerItemDecoration.VERTICAL);
-        mGroupRecycler.addItemDecoration(dividerItemDecoration);
         mGroupRecycler.setAdapter(mAdapter);
     }
 
@@ -176,6 +173,10 @@ public class GroupActivity extends AppCompatActivity implements
                 addNewGroup();
                 break;
 
+            case R.id.menu_notification:
+                startActivity(new Intent(this, DailyGoalActivity.class));
+                break;
+
             case R.id.menu_sign_out:
                 AuthUI.getInstance()
                         .signOut(this)
@@ -201,7 +202,6 @@ public class GroupActivity extends AppCompatActivity implements
     }
 
     private Task<Void> deleteGroup(final DocumentReference groupRef) {
-        Toast.makeText(this, "Deleting Group", Toast.LENGTH_SHORT).show();
         return mFirestore.runTransaction(new Transaction.Function<Void>() {
             @Override
             public Void apply(Transaction transaction) throws FirebaseFirestoreException{
@@ -224,7 +224,6 @@ public class GroupActivity extends AppCompatActivity implements
         deleteGroup(groupRef).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                Toast.makeText(GroupActivity.this, "Delete Group Successfully", Toast.LENGTH_SHORT).show();
                 hideKeyboard();
             }
         }).addOnFailureListener(this, new OnFailureListener() {

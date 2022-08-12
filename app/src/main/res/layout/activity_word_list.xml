@@ -34,7 +34,6 @@
         android:layout_below="@+id/filter_bar_container"
         android:background="@drawable/bg_shadow" />
 
-    <!-- Empty list (pizza guy) view -->
     <LinearLayout
         android:id="@+id/word_list_view_empty"
         android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
 
         <ImageView
             style="@style/AppTheme.PizzaGuy"
-            android:src="@drawable/pizza_monster" />
+            android:src="@drawable/ic_empty_view_here" />
 
         <TextView
             style="@style/AppTheme.Body1"

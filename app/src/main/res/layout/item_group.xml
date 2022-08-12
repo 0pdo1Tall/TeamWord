@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="?attr/selectableItemBackground"
+    android:background="#B6B6B6"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -32,13 +32,15 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/card_view"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="22dp"
         android:layout_marginBottom="20dp"
         android:layout_toRightOf="@+id/card_view"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
         android:textColor="#12467A"
+        android:textSize="26sp"
+        android:textStyle="bold"
         tools:text="Group ABC" />
 
 </RelativeLayout>

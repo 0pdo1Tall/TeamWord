@@ -29,7 +29,6 @@ public class GroupDeleteDialogFragment extends DialogFragment {
 
     @OnClick(R.id.group_delete_button)
     public void onSubmitClicked(View v){
-        Toast.makeText(getContext(), "Group Deleted", Toast.LENGTH_SHORT).show();
         if(mGroupDeleteListener != null){
             mGroupDeleteListener.onGroupDelete(FirebaseFirestore.getInstance().collection("group").document(mGroupId)); // As well
         }
@@ -38,7 +37,6 @@ public class GroupDeleteDialogFragment extends DialogFragment {
 
     @OnClick(R.id.group_cancel_button)
     public void onDeleteCancelClicked(View v){
-        Toast.makeText(getContext(), "Group Delete Cancel", Toast.LENGTH_SHORT).show();
         dismiss();
     }
 

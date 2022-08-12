@@ -84,9 +84,6 @@ public class WordDetailActivity extends AppCompatActivity
     @BindView(R.id.word_category)
     TextView mCategoryView;
 
-    @BindView(R.id.word_price)
-    TextView mPriceView;
-
     @BindView(R.id.view_empty_ratings)
     ViewGroup mEmptyView;
 
@@ -261,7 +258,7 @@ public class WordDetailActivity extends AppCompatActivity
 
         // Background image
         Glide.with(mImageView.getContext())
-                .load(word.getPhoto())
+                .load(R.drawable.pic_1)
                 .into(mImageView);
 
     }

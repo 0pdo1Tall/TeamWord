@@ -36,7 +36,7 @@
         android:layout_toRightOf="@+id/word_item_cardview"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="#811616"
         android:textStyle="bold"
         tools:text="Foo's Bar" />
 
@@ -59,7 +59,7 @@
         android:layout_marginLeft="4dp"
         android:layout_toRightOf="@+id/word_item_rating"
         android:gravity="center_vertical"
-        android:textColor="@color/greyDisabled"
+        android:textColor="#80005A"
         android:textStyle="bold"
         tools:text="(10)" />
 
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/word_item_name"
         android:layout_below="@+id/word_item_rating"
-        android:textColor="@color/greySecondary"
+        android:textColor="#80005A"
         android:textStyle="bold"
         tools:text="Italian" />
 

@@ -26,9 +26,9 @@ public class WordUtil {
 
     private static final String TAG = "WordUtil";
 
-    private static final String WORD_URL_FMT = "https://storage.googleapis.com/main-api-356704.appspot.com/picture_%d.jpg";
+    private static final String WORD_URL_FMT = "https://storage.googleapis.com/main-api-356704.appspot.com/pic_%d.jpg";
 
-    private static final int MAX_IMAGE_NUM = 4;
+    private static final int MAX_IMAGE_NUM = 10;
 
     public static String getCleanWord(String s){
         return s.toLowerCase().replaceAll("\\s","");

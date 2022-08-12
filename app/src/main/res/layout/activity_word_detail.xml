@@ -19,7 +19,7 @@
             android:layout_height="200dp"
             android:alpha="1.0"
             android:scaleType="centerCrop"
-            tools:src="@drawable/food_1" />
+            tools:src="@drawable/pic_1" />
 
         <!-- Back button -->
         <View
@@ -40,7 +40,7 @@
             android:id="@+id/word_button_edit"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/word_price"
+            android:layout_alignLeft="@+id/word_space"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="-71dp"
             android:layout_marginTop="97dp"
@@ -55,7 +55,8 @@
             android:layout_above="@+id/word_name"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="20dp"
-            android:textColor="#3397C1"
+            android:textColor="#4228C6"
+            android:text="TestUser@gmail.com"
             android:textStyle="bold" />
 
         <TextView
@@ -66,7 +67,7 @@
             android:layout_above="@+id/word_rating"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
-            android:textColor="#AD5D4C"
+            android:textColor="#811616"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="Some word" />
@@ -86,12 +87,13 @@
             style="@style/AppTheme.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/word_rating"
             android:layout_alignTop="@+id/word_rating"
+            android:layout_alignBottom="@+id/word_rating"
             android:layout_marginLeft="4dp"
             android:layout_toRightOf="@+id/word_rating"
             android:gravity="center"
-            android:textColor="@android:color/white"
+            android:textColor="#80005A"
+            android:textStyle="bold"
             tools:text="(10)" />
 
         <TextView
@@ -103,7 +105,7 @@
             android:layout_alignBottom="@+id/word_image"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="#80005A"
             android:textSize="22sp"
             tools:text="Italian" />
 
@@ -123,13 +125,15 @@
             android:layout_below="@+id/word_category"
             android:layout_alignTop="@+id/word_category"
             android:layout_toRightOf="@+id/word_meaning_divider"
-            android:textColor="#AD5D4C"
+            android:maxWidth="220dp"
+            android:maxLines="1"
+            android:textColor="#811616"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="San Francisco" />
 
         <TextView
-            android:id="@+id/word_price"
+            android:id="@+id/word_space"
             style="@style/AppTheme.Body1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -181,7 +185,7 @@
 
         <ImageView
             style="@style/AppTheme.PizzaGuy"
-            android:src="@drawable/pizza_monster" />
+            android:src="@drawable/ic_empty_view_here" />
 
         <TextView
             style="@style/AppTheme.Body1"
